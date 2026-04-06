@@ -1,32 +1,36 @@
-// Updated config.cpp file for DayZ 1.28 compatibility
+// DayZ 1.28 Compatible Vehicle Configuration
 
-class CfgSlots
-{
-    // Proper slot naming conventions (lowercase)
-    itemSlot1 = "weapon";
-    itemSlot2 = "backpack";
-    // Add other slots as needed
-};
-
-class SimulationModule
-{
-    // Correct inventory slot assignments
-    inventorySlots[] = {"itemSlot1", "itemSlot2"};
-};
-
-class DoorSelection
-{
-    // Proper selection names for doors
-    doorFront = "door_front";
-    doorBack = "door_back";
-};
-
-class DamageSystem
-{
-    // Fixed DamageSystem definitions without circular inheritance
-    class Damage
-    {
-        // Damage properties and methods
+class Vehicle {
+    class DamageSystem {
+        class GlobalHealth {
+            class Health { 
+                hitpoints = 1000; 
+                healthLevel[] = { 
+                    {1.0, "Healthy"}, 
+                    {0.5, "Damaged"}, 
+                    {0.0, "Destroyed"} 
+                }; 
+            }; 
+        }; 
     };
-    // Other necessary damage system definitions
+    
+    class Doors {
+        class Door_1 {
+            openable = true;
+            animationPhase = "door_1_open";
+        };
+        class Door_2 {
+            openable = true;
+            animationPhase = "door_2_open";
+        };
+    };
+    
+    inventorySlots[] = { 
+        "slot_primary", 
+        "slot_secondary", 
+        "slot_engine", 
+        "slot_attachment" 
+    };
+    
+    // Additional configurations and parameters
 };
